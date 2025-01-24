@@ -29,7 +29,7 @@ jobs:
       - name: Update version for ci
         run: |
           COMMIT_HASH=$(git rev-parse --short HEAD)
-          CURRENT_VERSION=$(grep -oP '^version = "\K[^\"]+' /home/runner/work/Made-In-Abyss/Made-In-Abyss/src/main/resources/META-INF/Mods.toml)
+          CURRENT_VERSION=$(grep -oP '^version = "\K[^\"]+' ./src/main/resources/META-INF/Mods.toml)
           if [[ "$CURRENT_VERSION" =~ -alpha\.[0-9]+$ ]]; then
             BASE_VERSION=${CURRENT_VERSION%-alpha*}
             ALPHA_NUM=${CURRENT_VERSION##*-alpha.}
@@ -38,7 +38,7 @@ jobs:
           else
           NEW_VERSION="${CURRENT_VERSION}-alpha.0"
           fi
-          sed -i "s/^version = \"$CURRENT_VERSION\"/version = \"$NEW_VERSION\"/" /home/runner/work/Made-In-Abyss/Made-In-Abyss/src/main/resources/META-INF/Mods.toml
+          sed -i "s/^version = \"$CURRENT_VERSION\"/version = \"$NEW_VERSION\"/" ./src/main/resources/META-INF/Mods.toml
           echo "Updated Mods.toml version to $NEW_VERSION"
           echo "CURRENT_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
