@@ -7,7 +7,7 @@
 The "Made In Abyss" mod based on Minecraft is currently under development...
 
 ## Getting Started
-1. 使用 [IntelliJ IDEA](https://www.jetbrains.com/idea/) & [JDK 17](https://adoptium.net/temurin/releases/?os=any&version=17)
+1. Use [IntelliJ IDEA](https://www.jetbrains.com/idea/) & [JDK 17](https://adoptium.net/temurin/releases/?os=any&version=17)
 2. Run `gradlew runData`
 3. Run `gradlew runClient`
 
