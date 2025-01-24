@@ -39,5 +39,13 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: ./gradlew  prepareRunGameTestServer --no-daemon
 
+      - name: Save caches
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+          
       - name: Run game tests
         run: ./gradlew runGameTestServer --no-daemon
